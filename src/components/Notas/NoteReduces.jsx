@@ -13,7 +13,7 @@ const NoteReduces = () => {
 
   return (
     <div>
-      <div className="d-flex mb-3">
+      <div className="d-flex  gap-1 mb-3">
         <input
           className="form-control"
           onChange={(e) => setNote(e.target.value)}
