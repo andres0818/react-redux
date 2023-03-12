@@ -44,14 +44,14 @@ const Counter = () => {
 
   return (
     <div style={styles.container}>
-      <button className="btn btn-danger " onClick={remove}>
+      <button className="btn btn-success " onClick={remove}>
         -
       </button>
       <p style={styles.text}>{count}</p>
       <button className="btn btn-success" onClick={add}>
         +
       </button>
-      <button className="btn btn-info" onClick={reset}>
+      <button className="btn btn-danger" onClick={reset}>
         Reset
       </button>
     </div>
