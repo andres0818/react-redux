@@ -1,45 +1,27 @@
 import React, { useState } from "react";
-import { createStore } from "redux";
+import {
+  actionDecremented,
+  actionIncremented,
+  actionReset,
+} from "./redux/action";
+import { storeCounter } from "./redux/store";
 
 const Counter = () => {
   const [count, setCount] = useState(0);
 
-  const counterReducer = (state = count, action: any) => {
-    switch (action.type) {
-      case "incremented":
-        return state + 1;
-      case "decremented":
-        return state - 1;
-      case "reset":
-        return (state = 0);
-      default:
-        return state;
-    }
-  };
-
-  const store = createStore(
-    counterReducer,
-    // @ts-ignore
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-
-  const actionIncremented = { type: "incremented" };
-  const actionDecremented = { type: "decremented" };
-  const actionReset = { type: "reset" };
-
   const add = () => {
-    store.dispatch(actionIncremented);
+    storeCounter.dispatch(actionIncremented);
   };
 
   const remove = () => {
-    store.dispatch(actionDecremented);
+    storeCounter.dispatch(actionDecremented);
   };
   const reset = () => {
-    store.dispatch(actionReset);
+    storeCounter.dispatch(actionReset);
   };
 
-  store.subscribe(() => {
-    setCount(store.getState());
+  storeCounter.subscribe(() => {
+    setCount(storeCounter.getState());
   });
 
   return (
