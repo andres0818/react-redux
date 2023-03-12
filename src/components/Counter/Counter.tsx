@@ -7,7 +7,7 @@ import {
 import { storeCounter } from "./redux/store";
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(storeCounter.getState());
 
   const add = () => {
     storeCounter.dispatch(actionIncremented);
