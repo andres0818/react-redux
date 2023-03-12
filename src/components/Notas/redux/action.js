@@ -6,11 +6,26 @@ export const note = (state = [], action) => {
       return state.concat(action.payload);
     }
     case "DELETE_NOTE": {
-        return state.filter(e=> e.id !== action.payload.id)
+      return state.filter((e) => e.id !== action.payload.id);
+    }
+    case "EDIT_NOTE": {
+      const res = state.filter((e) => e.id === action.payload.id)[0];
+      res.content = action.payload.content;
+      return state;
     }
     default:
       return state;
   }
+};
+
+export const editNote = (data = "", id) => {
+  storeNotes.dispatch({
+    type: "EDIT_NOTE",
+    payload: {
+      content: data,
+      id: id,
+    },
+  });
 };
 
 export const addNote = (data) => {
